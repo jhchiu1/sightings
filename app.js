@@ -12,7 +12,7 @@ var helpers = require('./hbshelpers/helpers');
 
 
 // Set the environment variable MONGO_URL to the correct URL
-var db_url = "mongodb://dbUser:password23@127.0.0.1:27017/sightings?authSource=admin";
+var db_url = "mongodb://dbUser:password23@ds125016.mlab.com:25016/sightings";
 mongoose.Promise = global.Promise;
 
 // And connect to mongoose, log success or error

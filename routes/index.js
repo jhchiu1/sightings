@@ -50,9 +50,11 @@ router.post('/modBird', function(req, res, next) {  // Modify button
 
 });
 
+// POST to create new bird
 router.post('/addBird', function(req, res, next) {
+    // Use form data to create new bird save to DB
     var bird = Bird(req.body);
-
+    // Form data as key value pairs
     bird.nest = {
         location: req.body.nestLocation,
         materials: req.body.nestMaterials
@@ -77,7 +79,7 @@ router.post('/addBird', function(req, res, next) {
         });
 });
 
-
+// GET info about 1 bird
 router.get('/bird/:_id', function(req, res, next) {
 
     Bird.findOne( { _id:  req.params._id})
@@ -95,6 +97,7 @@ router.get('/bird/:_id', function(req, res, next) {
         });
 });
 
+// POST to add new sighting for bird
 router.post('/addSighting', function(req, res, next){
 
     // Push new date onto datesSeen array and then sort in date order.

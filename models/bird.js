@@ -24,7 +24,10 @@ var birdSchema = new mongoose.Schema({
         min: [1, 'Should be at least 1 cm.'],
         max: [300, 'Should not be more than 300 cm.'] },    // At least 1, no more than 50
     endangered: { type: Boolean, default: false },        // Is bird species threatened with extinction?
-    datesSeen: [ {
+    nest: {
+        location: String,                                   // Nest location, materials
+        materials: String,
+    datesSeen: [ {                   // An array of dates a bird of this species was seen. Must be now, or in the past
         type: Date,
         required: true,
         validate: {
@@ -34,10 +37,7 @@ var birdSchema = new mongoose.Schema({
             },
             message: 'Date must be a valid date. Date must be now or in the past.'
         }
-    } ],  // An array of dates a bird of this species was seen. Must be now, or in the past
-    nest: {
-        location: String,
-        materials: String
+    } ],
     }
 });
 

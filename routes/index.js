@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-/* POST delete 1 bird. */
+/* POST to delete 1 bird. */
 router.post('/delete', function(req, res, next){    // Delete button added
 
     Bird.deleteOne( { _id : req.body._id } )
@@ -37,7 +37,10 @@ router.post('/delete', function(req, res, next){    // Delete button added
 
 /* POST modify 1 bird. */
 router.post('/modBird', function(req, res, next) {  // Modify button
-    Bird.findOneAndUpdate( {_id: req.body._id}, {$set: {description : req.body.description}} )  // Modify description
+    Bird.findOneAndUpdate( {_id: req.body._id}, {$set: {description : req.body.description,
+    averageEggs: req.body.averageEggs, height: req.body.height, endangered: req.body.endangered,
+    nestLocation: req.body.nestLocation, nestMaterials: req.body.nestMaterials,
+        datesSeen: req.body.datesSeen}} )  // Modify bird record details
         .then((modifiedBird) => {
             if (modifiedBird) {   // Name of the document prior to update
                 res.redirect('/')  // Redirect to home after updated
